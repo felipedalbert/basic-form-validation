@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic form validation</title>
+</head>
+<body>
+    <main>
+        <div class="content-box">
+            <div class="text-container">
+                <h1>Ficou com dúvida? Nos mande uma mensagem!</h1>
+
+                <p>
+                    caso tenha ficado com qualquer dúvida basta nos mandar
+                    uma mensagem e entraremos em contato em menos de 24h.
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form action="index.html" method="get">
+                    <div class="user-info-container">
+                        
+                        <div class="input-box">
+                            <input type="text" name="name" id="name" placeholder="Nome completo *">
+                            <span>campo obrigatório</span>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="email" name="email" id="email" placeholder="Email *">
+                            <span>campo obrigatório</span>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="tel" name="telephone" id="telephone" placeholder="Telefone *">
+                            <span>campo obrigatório</span>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="text" name="message" id="message" placeholder="Mensagem*">
+                            <span>campo obrigatório</span>
+                        </div>
+                    </div>
+
+                    <span class="orientation-text">*Campos obrigatórios</span>
+
+                    <button>Enivar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
