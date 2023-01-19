@@ -1,0 +1,125 @@
+main{
+    height: 100vh;
+    width: 100vw;
+}
+
+.content-box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 120px;
+    background: url(../images/bg-repeat.jpg) repeat center center;
+    background-size: contain;
+}
+
+.content-box .text-container{
+    width: 300px;
+    color: #ffffff;
+}
+
+.content-box .text-container h2{
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.content-box .text-container p{
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-top: 11px;
+}
+
+.content-box .form-container {
+    width: 340px;
+    height: 378px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-box .form-container .user-info-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+}
+
+.content-box .form-container .user-info-container .input-line{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1px;
+}
+
+.content-box .form-container .user-info-container .input-line input, .content-box .form-container  .user-info-container .input-line textarea{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 8px 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-box .form-container .user-info-container .input-line input.error-validation, .content-box .form-container  .user-info-container .input-line textarea.error-validation{
+    border-color: #F52E2E;
+}
+
+.content-box .form-container .user-info-container .input-line input.correct-validation, .content-box .form-container  .user-info-container .input-line textarea.correct-validation{
+    border-color: #00C22B;
+}
+
+.content-box .form-container .user-info-container .input-line textarea{
+    height: 100px;
+    resize: none;
+}
+
+.content-box .form-container .user-info-container .input-line input::placeholder, .content-box .form-container  .user-info-container .input-line textarea::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #A8A8A8;
+}
+
+.content-box .form-container .user-info-container .input-line span{
+    margin-left: 4px;
+    font-size: .9rem;
+    opacity: 0;
+    user-select: none;
+}
+
+.content-box .form-container .user-info-container .input-line span.error-validation{
+    color: #F52E2E;
+    opacity: 1;
+}
+
+.content-box .form-container .user-info-container .input-line.error-validation:last-child span{
+    margin-bottom: 11px;
+}
+
+/* ^^^ gambiarra de colocar error-validation no input-line::last-child para gerar o espaçamento (margin bottom somente do ultimo span, quando ativado. Lembre-se que será necessário inserir a classe error validation em todos os input-line pelo js */
+
+.content-box .form-container .orientation-text{
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: -2px 0 9px 0;
+}
+
+.content-box .form-container button{
+    height: 41px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: #3CCC87;
+    color: #ffffff;
+    transition: ease .1s;
+}
+
+.content-box .form-container button:hover{
+    background-color: #2b9c66;
+}
