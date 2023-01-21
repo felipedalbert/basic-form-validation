@@ -33,7 +33,6 @@ main{
 
 .content-box .form-container {
     width: 340px;
-    height: 378px;
     background-color: #ffffff;
     border-radius: 8px;
     padding: 21px;
@@ -62,6 +61,10 @@ main{
     font-weight: 400;
     padding: 8px 10px;
     font-family: 'Roboto', sans-serif;
+}
+
+.content-box .form-container .user-info-container .input-line input:focus, .content-box .form-container  .user-info-container .input-line textarea:focus{
+    border-color: #000000 !important;
 }
 
 .content-box .form-container .user-info-container .input-line input.error-validation, .content-box .form-container  .user-info-container .input-line textarea.error-validation{
@@ -100,7 +103,7 @@ main{
     margin-bottom: 11px;
 }
 
-/* ^^^ gambiarra de colocar error-validation no input-line::last-child para gerar o espaçamento (margin bottom somente do ultimo span, quando ativado. Lembre-se que será necessário inserir a classe error validation em todos os input-line pelo js */
+/* ^^^ gambiarra de colocar error-validation no input-line::last-child para gerar o espaçamento (margin bottom) somente do ultimo span, quando ativado. Lembre-se que será necessário inserir a classe error validation em todos os input-line pelo js */
 
 .content-box .form-container .orientation-text{
     font-weight: 400;
