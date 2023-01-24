@@ -1,8 +1,10 @@
 const inputLine = document.querySelectorAll('.input-line')
 const sendButton = document.querySelector('button')
+let contadorDeExclusao = 0
 
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
+    const inputDataClear = document.querySelectorAll('[placeholder]')
     const errorAlert = thisInputLine.querySelector('span')
 
     function errorValidation(){
@@ -35,6 +37,12 @@ inputLine.forEach(thisInputLine => {
                     errorValidation()
                 }
             })
+
+            
+        }
+
+        if(contadorDeExclusao == 4){
+            location.reload()
         }
     
     })
@@ -42,9 +50,18 @@ inputLine.forEach(thisInputLine => {
     inputData.addEventListener('change', () =>{
         if(inputData.value !== ''){
             correctValidation()
+            contadorDeExclusao++
+
+            if(contadorDeExclusao > 4){
+                return
+            }
+
+            console.log(contadorDeExclusao)
 
         }else if(inputData.value == ''){
             inputData.classList.remove('correct-validation')
+            contadorDeExclusao--
+            console.log(contadorDeExclusao)
         }
     }) 
 })
