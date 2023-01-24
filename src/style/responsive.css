@@ -43,3 +43,42 @@
     }
     
 }
+
+@media (max-height: 560px){
+    .content-box .text-container{
+        max-width: 240px;
+    }
+    
+    .content-box .text-container h2{
+        font-size: 1.5rem;
+    }
+
+    .content-box .text-container p{
+        font-size: 1.2rem;
+        margin-top: 8px;
+    }
+    
+    .content-box{
+        row-gap: 5vh;
+        padding: 20px;
+    }
+
+    .content-box .form-container .user-info-container .input-line input, .content-box .form-container  .user-info-container .input-line textarea{
+        height: 32px;
+        font-size: 1.3rem;
+    }
+
+    .content-box .form-container .user-info-container .input-line textarea{
+        height: 80px;
+    }
+
+    .content-box .form-container .user-info-container .input-line input::placeholder, .content-box .form-container  .user-info-container .input-line textarea::placeholder{
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.3rem;
+
+    }
+
+    .content-box .form-container button{
+        height: 35px;
+    }
+}
