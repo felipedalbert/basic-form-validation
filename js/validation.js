@@ -4,7 +4,6 @@ let contadorDeExclusao = 0
 
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
-    const inputDataClear = document.querySelectorAll('[placeholder]')
     const errorAlert = thisInputLine.querySelector('span')
 
     function errorValidation(){
@@ -37,14 +36,11 @@ inputLine.forEach(thisInputLine => {
                     errorValidation()
                 }
             })
-
-            
         }
 
         if(contadorDeExclusao == 4){
             location.reload()
         }
-    
     })
 
     inputData.addEventListener('change', () =>{
