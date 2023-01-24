@@ -1,6 +1,6 @@
 const inputLine = document.querySelectorAll('.input-line')
 const sendButton = document.querySelector('button')
-let contadorDeExclusao = 0
+let deleteCounter = 0
 
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
@@ -37,7 +37,7 @@ inputLine.forEach(thisInputLine => {
             insideValidation()
         }
 
-        if(contadorDeExclusao == 4){
+        if(deleteCounter == 4){
             location.reload()
         }
     })
@@ -45,18 +45,18 @@ inputLine.forEach(thisInputLine => {
     inputData.addEventListener('change', () =>{
         if(inputData.value !== ''){
             correctValidation()
-            contadorDeExclusao++
+            deleteCounter++
 
-            if(contadorDeExclusao > 4){
-                contadorDeExclusao--
+            if(deleteCounter > 4){
+                deleteCounter--
             }
 
-            console.log(contadorDeExclusao)
+            console.log(deleteCounter)
 
         }else if(inputData.value == ''){
             inputData.classList.remove('correct-validation')
-            contadorDeExclusao--
-            console.log(contadorDeExclusao)
+            deleteCounter--
+            console.log(deleteCounter)
         }
     }) 
 })
