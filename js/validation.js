@@ -48,7 +48,7 @@ inputLine.forEach(thisInputLine => {
             contadorDeExclusao++
 
             if(contadorDeExclusao > 4){
-                return
+                contadorDeExclusao--
             }
 
             console.log(contadorDeExclusao)
