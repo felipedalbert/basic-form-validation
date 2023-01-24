@@ -20,22 +20,21 @@ inputLine.forEach(thisInputLine => {
     }
 
     sendButton.addEventListener('click', () =>{
+        function insideValidation(){
+            inputData.addEventListener('change', () =>{
+                if(inputData.value == ''){
+                    errorValidation()
+                }
+            })
+        }
 
         if(inputData.value == ''){
             errorValidation()
 
-            inputData.addEventListener('change', () =>{
-                if(inputData.value == ''){
-                    errorValidation()
-                }
-            })
+            insideValidation()
 
         }else if(inputData.value !== ''){
-            inputData.addEventListener('change', () =>{
-                if(inputData.value == ''){
-                    errorValidation()
-                }
-            })
+            insideValidation()
         }
 
         if(contadorDeExclusao == 4){
