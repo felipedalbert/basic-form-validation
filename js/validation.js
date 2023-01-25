@@ -4,18 +4,17 @@ let deleteCounter = 0
 
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
-    const errorAlert = thisInputLine.querySelector('span')
 
     function errorValidation(){
-        inputData.classList.add('error-validation')
         thisInputLine.classList.add('error-validation')
-        errorAlert.classList.add('error-validation')
+        inputData.classList.add('error-validation')
+        inputData.nextElementSibling.classList.add('error-validation')
     }
 
     function correctValidation(){
         thisInputLine.classList.remove('error-validation')
         inputData.classList.remove('error-validation')
-        errorAlert.classList.remove('error-validation')
+        inputData.nextElementSibling.classList.remove('error-validation')
         inputData.classList.add('correct-validation')
     }
 
