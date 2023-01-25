@@ -103,8 +103,6 @@ main{
     margin-bottom: 11px;
 }
 
-/* ^^^ gambiarra de colocar error-validation no input-line::last-child para gerar o espaçamento (margin bottom) somente do ultimo span, quando ativado. Lembre-se que será necessário inserir a classe error validation em todos os input-line pelo js */
-
 .content-box .form-container .orientation-text{
     font-weight: 400;
     font-size: 1.5rem;
