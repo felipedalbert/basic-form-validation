@@ -35,7 +35,7 @@ inputLine.forEach(thisInputLine => {
             insideValidation()
         }
 
-        if(deleteCounter.length === 4){
+        if(deleteCounter && deleteCounter.length === 4){
             location.reload()
         }
     })
