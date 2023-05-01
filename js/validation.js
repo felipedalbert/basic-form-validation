@@ -20,7 +20,7 @@ inputLine.forEach(thisInputLine => {
 
     sendButton.addEventListener('click', () =>{
         function insideValidation(){
-            inputData.addEventListener('change', () =>{
+            inputData.addEventListener('input', () =>{
                 if(inputData.value == ''){
                     errorValidation()
                 }
@@ -41,7 +41,7 @@ inputLine.forEach(thisInputLine => {
         }
     })
 
-    inputData.addEventListener('change', () =>{
+    inputData.addEventListener('input', () =>{
         if(inputData.value !== ''){
             correctValidation()
             deleteCounter++

@@ -64,7 +64,7 @@ main{
 }
 
 .content-box .form-container .user-info-container .input-line input:focus, .content-box .form-container  .user-info-container .input-line textarea:focus{
-    border-color: #000000 !important;
+    box-shadow: 3px 3px 8px #29272762;
 }
 
 .content-box .form-container .user-info-container .input-line input.error-validation, .content-box .form-container  .user-info-container .input-line textarea.error-validation{
