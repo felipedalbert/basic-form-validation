@@ -1,62 +1,57 @@
 const inputLine = document.querySelectorAll('.input-line')
 const sendButton = document.querySelector('button')
-let deleteCounter = 0
+let deleteCounter
+
+function errorValidation(thisInputLine, inputData){
+    thisInputLine.classList.add('error-validation')
+    inputData.classList.add('error-validation')
+    inputData.nextElementSibling.classList.add('error-validation')
+}
+
+function correctValidation(thisInputLine, inputData){
+    thisInputLine.classList.remove('error-validation')
+    inputData.classList.remove('error-validation')
+    inputData.nextElementSibling.classList.remove('error-validation')
+    inputData.classList.add('correct-validation')
+}
 
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
-
-    function errorValidation(){
-        thisInputLine.classList.add('error-validation')
-        inputData.classList.add('error-validation')
-        inputData.nextElementSibling.classList.add('error-validation')
-    }
-
-    function correctValidation(){
-        thisInputLine.classList.remove('error-validation')
-        inputData.classList.remove('error-validation')
-        inputData.nextElementSibling.classList.remove('error-validation')
-        inputData.classList.add('correct-validation')
-    }
 
     sendButton.addEventListener('click', () =>{
         function insideValidation(){
             inputData.addEventListener('input', () =>{
                 if(inputData.value == ''){
-                    errorValidation()
+                    errorValidation(thisInputLine, inputData)
                 }
             })
         }
 
         if(inputData.value == ''){
-            errorValidation()
+            errorValidation(thisInputLine, inputData)
 
             insideValidation()
-
         }else if(inputData.value !== ''){
             insideValidation()
         }
 
-        if(deleteCounter == 4){
+        if(deleteCounter.length === 4){
             location.reload()
         }
     })
 
     inputData.addEventListener('input', () =>{
         if(inputData.value !== ''){
-            correctValidation()
-            deleteCounter++
-
-            if(deleteCounter > 4){
-                deleteCounter--
-            }
-
-            console.log(deleteCounter)
+            correctValidation(thisInputLine, inputData)
+            console.log('caiu embaixo')
 
         }else if(inputData.value == ''){
             inputData.classList.remove('correct-validation')
-            deleteCounter--
-            console.log(deleteCounter)
         }
-    }) 
+    })
+
+    inputData.addEventListener('change', ()=>{
+        deleteCounter = document.querySelectorAll('.correct-validation')
+    })
 })
 
