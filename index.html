@@ -23,7 +23,7 @@
                 </p>
             </div>
 
-            <div class="form-container">
+            <form class="form-container" action="https://formsubmit.co/felipeoficial195@gmail.com" method="post">
                 <div class="user-info-container">
                     <div class="input-line">
                         <input type="text" name="name" id="name" placeholder="Nome completo *">
@@ -44,12 +44,16 @@
                         <textarea name="message" id="message" placeholder="Mensagem *" ></textarea>
                         <span>campo obrigatório</span>
                     </div>
+
+                    
+                    <input type="hidden" name="_subject" value="Nova mensagem do Formulário">
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
                 </div>
 
                 <span class="orientation-text">*Campos obrigatórios</span>
 
                 <button>Enviar</button>
-            </div>
+            </form>
         </div>
     </main>
 

@@ -1,5 +1,5 @@
 const inputLine = document.querySelectorAll('.input-line')
-const sendButton = document.querySelector('button')
+const form = document.querySelector('form')
 let deleteCounter
 
 function errorValidation(thisInputLine, inputData){
@@ -18,7 +18,9 @@ function correctValidation(thisInputLine, inputData){
 inputLine.forEach(thisInputLine => {
     const inputData = thisInputLine.querySelector('[placeholder]')
 
-    sendButton.addEventListener('click', () =>{
+    form.addEventListener('submit', (e) =>{
+        e.preventDefault()
+
         function insideValidation(){
             inputData.addEventListener('input', () =>{
                 if(inputData.value == ''){
@@ -36,7 +38,7 @@ inputLine.forEach(thisInputLine => {
         }
 
         if(deleteCounter && deleteCounter.length === 4){
-            location.reload()
+            form.submit()
         }
     })
 
