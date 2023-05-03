@@ -41,9 +41,7 @@ inputLine.forEach(thisInputLine => {
         if(deleteCounter && deleteCounter.length === 4){
             orientationText.innerHTML = 'Mensagem eviada com sucesso!'
 
-            setTimeout(1000)
-
-            form.submit()
+            setTimeout(()=>{form.submit()}, 1000)
         }
     })
 
