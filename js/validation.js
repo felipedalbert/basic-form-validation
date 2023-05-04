@@ -86,7 +86,6 @@ form.addEventListener('submit', (e) =>{
         const allInputData = document.querySelectorAll('[placeholder]')
         allInputData.forEach(input => {
             input.style.borderColor = 'black'
-            input.value = ''
         })
         
         orientationText.innerHTML = 'Mensagem eviada com sucesso!'
