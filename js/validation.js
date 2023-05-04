@@ -51,14 +51,10 @@ form.addEventListener('submit', (e) =>{
     
     if(deleteCounter && deleteCounter.length === 4){
         orientationText.innerHTML = 'Mensagem eviada com sucesso!'
+        orientationText.style.color = 'green'
 
-        setTimeout(1000)
-
-        form.submit()
-    }
-
-    orientationText.style.color = 'green'
-    
+        setTimeout(()=>form.submit(), 1000)
+    }  
 })
 
 
