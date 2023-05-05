@@ -3,20 +3,27 @@ const form = document.querySelector('form')
 const orientationText = document.querySelector('.orientation-text')
 let deleteCounter
 
-function errorValidation(thisInputLine, inputData, emailValidation){
-    if(emailValidation){
+function errorValidation(thisInputLine, inputData, regexValidator) {
+    function addDefaultClasses(){
         thisInputLine.classList.add('error-validation')
         inputData.classList.add('error-validation')
         inputData.nextElementSibling.classList.add('error-validation')
-        inputData.nextElementSibling.innerText = 'Digite um email válido'
-        console.log('oi')
-
-    }else{
-        thisInputLine.classList.add('error-validation')
-        inputData.classList.add('error-validation')
-        inputData.nextElementSibling.classList.add('error-validation') 
     }
 
+    if(regexValidator) {
+        addDefaultClasses()
+
+        switch (regexValidator){
+            case 'email':
+                inputData.nextElementSibling.innerText = 'Digite um email válido' 
+                break
+            case 'tel':
+                inputData.nextElementSibling.innerText = 'Digite um telefone válido'
+                break
+        }
+    }else{
+        addDefaultClasses()
+    }
 }
 
 function correctValidation(thisInputLine, inputData){
@@ -25,6 +32,27 @@ function correctValidation(thisInputLine, inputData){
     inputData.nextElementSibling.classList.remove('error-validation')
     inputData.classList.add('correct-validation')
 }
+
+function insertTelMask(){
+    const inputTel = document.querySelector('[name="telephone"]')
+
+    inputTel.addEventListener('input', (e)=>{
+        let valor = e.target.value;
+
+        valor = valor.replace(/\D/g, '');
+        valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
+        valor = valor.replace(/(\d{5})(\d)/, '$1-$2');
+
+        console.log(valor.length)
+
+        if (valor.length > 15) valor = valor.slice(0, 15);
+
+        e.target.value = valor;
+    })
+    
+}
+
+insertTelMask()
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault()
@@ -44,20 +72,42 @@ form.addEventListener('submit', (e) =>{
             })
         }
 
-        function validationEmail(){
+        function emailValidation(){
             let returnValue
 
             if(inputData.name === 'email'){
                 const emailRegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
-                const inputEmail = inputData.value
+                const inputEmailValue = inputData.value
 
-                console.log(inputData.value)
-
-                if (!emailRegExp.test(inputEmail)) {
-                    errorValidation(thisInputLine, inputData, true)
+                if (!emailRegExp.test(inputEmailValue)) {
+                    errorValidation(thisInputLine, inputData, 'email')
                     insideValidation()
                     returnValue = true
                 }else{
+                    returnTrue = false
+                }
+    
+            }
+
+            if (returnValue === true) return true
+        }
+
+
+        function telValidation() {
+            console.log('entrou')
+
+            let returnValue
+
+            if(inputData.name === 'telephone'){
+                console.log('entrou')
+                const telRegExp = /^\(\d{2}\) \d{5}\-\d{4}$/;
+                const inputTelValue = inputData.value;
+
+                if (!telRegExp.test(inputTelValue)) {
+                    errorValidation(thisInputLine, inputData, 'tel')
+                    insideValidation()
+                    returnValue = true
+                } else {
                     returnTrue = false
                 }
     
@@ -72,11 +122,11 @@ form.addEventListener('submit', (e) =>{
             insideValidation()
         }else if(inputData.value !== ''){
             
-            if(validationEmail()) return
+            if((!emailValidation()) && (!telValidation())){
+                correctValidation(thisInputLine, inputData)
 
-            correctValidation(thisInputLine, inputData)
-
-            insideValidation() 
+                insideValidation() 
+            } 
         }
 
         deleteCounter = document.querySelectorAll('.correct-validation')
@@ -84,6 +134,7 @@ form.addEventListener('submit', (e) =>{
     
     if(deleteCounter && deleteCounter.length === 4){
         const allInputData = document.querySelectorAll('[placeholder]')
+
         allInputData.forEach(input => {
             input.style.borderColor = 'black'
         })
@@ -94,5 +145,3 @@ form.addEventListener('submit', (e) =>{
         setTimeout(()=>form.submit(), 1000)
     }  
 })
-
-
