@@ -92,7 +92,6 @@ form.addEventListener('submit', (e) =>{
             if (returnValue === true) return true
         }
 
-
         function telValidation() {
             console.log('entrou')
 
