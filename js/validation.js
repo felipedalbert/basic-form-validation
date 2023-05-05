@@ -60,7 +60,7 @@ form.addEventListener('submit', (e) =>{
     inputLine.forEach(thisInputLine => {
         const inputData = thisInputLine.querySelector('[placeholder]')
         
-        function insideValidation(){
+        function afterSubmitValidation(){
             inputData.addEventListener('input', () =>{
                 if(inputData.value == ''){
                     errorValidation(thisInputLine, inputData)
@@ -81,7 +81,7 @@ form.addEventListener('submit', (e) =>{
 
                 if (!emailRegExp.test(inputEmailValue)) {
                     errorValidation(thisInputLine, inputData, 'email')
-                    insideValidation()
+                    afterSubmitValidation()
                     returnValue = true
                 }else{
                     returnTrue = false
@@ -105,7 +105,7 @@ form.addEventListener('submit', (e) =>{
 
                 if (!telRegExp.test(inputTelValue)) {
                     errorValidation(thisInputLine, inputData, 'tel')
-                    insideValidation()
+                    afterSubmitValidation()
                     returnValue = true
                 } else {
                     returnTrue = false
@@ -119,13 +119,13 @@ form.addEventListener('submit', (e) =>{
         if(inputData.value == ''){
             errorValidation(thisInputLine, inputData)
 
-            insideValidation()
+            afterSubmitValidation()
         }else if(inputData.value !== ''){
             
             if((!emailValidation()) && (!telValidation())){
                 correctValidation(thisInputLine, inputData)
 
-                insideValidation() 
+                afterSubmitValidation() 
             } 
         }
 
