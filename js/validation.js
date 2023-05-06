@@ -132,15 +132,10 @@ form.addEventListener('submit', (e) =>{
     })
     
     if(deleteCounter && deleteCounter.length === 4){
-        const allInputData = document.querySelectorAll('[placeholder]')
-
-        allInputData.forEach(input => {
-            input.style.borderColor = 'black'
-        })
         
         orientationText.innerHTML = 'Mensagem eviada com sucesso!'
         orientationText.style.color = 'green'
 
-        setTimeout(()=>form.submit(), 1000)
+        setTimeout(()=>form.submit(), 300)
     }  
 })
