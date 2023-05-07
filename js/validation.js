@@ -60,7 +60,7 @@ form.addEventListener('submit', (e) =>{
     inputLine.forEach(thisInputLine => {
         const inputData = thisInputLine.querySelector('[placeholder]')
         
-        function afterSubmitValidation(){
+        function validateAfterSubmit()(){
             inputData.addEventListener('input', () =>{
                 if(inputData.value == ''){
                     errorValidation(thisInputLine, inputData)
@@ -72,44 +72,30 @@ form.addEventListener('submit', (e) =>{
             })
         }
 
-        function emailValidation(){
+        function validateContact() {
             let returnValue
 
-            if(inputData.name === 'email'){
-                const emailRegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
-                const inputEmailValue = inputData.value
-
-                if (!emailRegExp.test(inputEmailValue)) {
-                    errorValidation(thisInputLine, inputData, 'email')
-                    afterSubmitValidation()
+            function regexValidator(validator, typeErrorMessage){
+                if(validator){
+                    errorValidation(thisInputLine, inputData, typeErrorMessage)
+                    validateAfterSubmit()()
                     returnValue = true
                 }else{
                     returnTrue = false
                 }
-    
             }
-
-            if (returnValue === true) return true
-        }
-
-        function telValidation() {
-            console.log('entrou')
-
-            let returnValue
 
             if(inputData.name === 'telephone'){
                 console.log('entrou')
                 const telRegExp = /^\(\d{2}\) \d{5}\-\d{4}$/;
                 const inputTelValue = inputData.value;
 
-                if (!telRegExp.test(inputTelValue)) {
-                    errorValidation(thisInputLine, inputData, 'tel')
-                    afterSubmitValidation()
-                    returnValue = true
-                } else {
-                    returnTrue = false
-                }
-    
+                regexValidator(!telRegExp.test(inputTelValue), 'tel')
+            }else if(inputData.name === 'email'){
+                const emailRegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+                const inputEmailValue = inputData.value
+
+                regexValidator(!emailRegExp.test(inputEmailValue), 'email')
             }
 
             if (returnValue === true) return true
@@ -118,13 +104,13 @@ form.addEventListener('submit', (e) =>{
         if(inputData.value == ''){
             errorValidation(thisInputLine, inputData)
 
-            afterSubmitValidation()
+            validateAfterSubmit()
         }else if(inputData.value !== ''){
             
-            if((!emailValidation()) && (!telValidation())){
+            if(!validateContact()){
                 correctValidation(thisInputLine, inputData)
 
-                afterSubmitValidation() 
+                validateAfterSubmit()() 
             } 
         }
 
