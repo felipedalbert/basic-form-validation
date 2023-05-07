@@ -14,7 +14,7 @@ function errorValidation(thisInputLine, inputData, errorType) {
     if(errorType) {
         addDefaultClasses()
 
-        inputData.nextElementSibling.innerText = regexValidator === 'email' ? 
+        inputData.nextElementSibling.innerText = errorType === 'email' ? 
         'Digite um email válido' : 'Digite um telefone válido'
     }else{
         addDefaultClasses()
