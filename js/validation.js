@@ -5,6 +5,7 @@ let deleteCounter
 
 function errorValidation(thisInputLine, inputData, regexValidator) {
     function addDefaultClasses(){
+
         thisInputLine.classList.add('error-validation')
         inputData.classList.add('error-validation')
         inputData.nextElementSibling.classList.add('error-validation')
@@ -27,6 +28,7 @@ function errorValidation(thisInputLine, inputData, regexValidator) {
 }
 
 function correctValidation(thisInputLine, inputData){
+
     thisInputLine.classList.remove('error-validation')
     inputData.classList.remove('error-validation')
     inputData.nextElementSibling.classList.remove('error-validation')
@@ -37,13 +39,12 @@ function insertTelMask(){
     const inputTel = document.querySelector('[name="telephone"]')
 
     inputTel.addEventListener('input', (e)=>{
+
         let valor = e.target.value;
 
         valor = valor.replace(/\D/g, '');
         valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
         valor = valor.replace(/(\d{5})(\d)/, '$1-$2');
-
-        console.log(valor.length)
 
         if (valor.length > 15) valor = valor.slice(0, 15);
 
@@ -58,10 +59,12 @@ form.addEventListener('submit', (e) =>{
     e.preventDefault()
 
     inputLine.forEach(thisInputLine => {
+
         const inputData = thisInputLine.querySelector('[placeholder]')
         
-        function validateAfterSubmit()(){
+        function validateAfterSubmit(){
             inputData.addEventListener('input', () =>{
+
                 if(inputData.value == ''){
                     errorValidation(thisInputLine, inputData)
                     inputData.classList.remove('correct-validation')
@@ -73,12 +76,14 @@ form.addEventListener('submit', (e) =>{
         }
 
         function validateContact() {
+
             let returnValue
 
             function regexValidator(validator, typeErrorMessage){
+
                 if(validator){
                     errorValidation(thisInputLine, inputData, typeErrorMessage)
-                    validateAfterSubmit()()
+                    validateAfterSubmit()
                     returnValue = true
                 }else{
                     returnTrue = false
@@ -86,12 +91,13 @@ form.addEventListener('submit', (e) =>{
             }
 
             if(inputData.name === 'telephone'){
-                console.log('entrou')
+
                 const telRegExp = /^\(\d{2}\) \d{5}\-\d{4}$/;
                 const inputTelValue = inputData.value;
 
                 regexValidator(!telRegExp.test(inputTelValue), 'tel')
             }else if(inputData.name === 'email'){
+
                 const emailRegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
                 const inputEmailValue = inputData.value
 
@@ -102,6 +108,7 @@ form.addEventListener('submit', (e) =>{
         }
 
         if(inputData.value == ''){
+
             errorValidation(thisInputLine, inputData)
 
             validateAfterSubmit()
@@ -110,7 +117,7 @@ form.addEventListener('submit', (e) =>{
             if(!validateContact()){
                 correctValidation(thisInputLine, inputData)
 
-                validateAfterSubmit()() 
+                validateAfterSubmit() 
             } 
         }
 
