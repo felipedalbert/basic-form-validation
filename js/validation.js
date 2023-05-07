@@ -3,7 +3,7 @@ const form = document.querySelector('form')
 const orientationText = document.querySelector('.orientation-text')
 let deleteCounter
 
-function errorValidation(thisInputLine, inputData, regexValidator) {
+function errorValidation(thisInputLine, inputData, errorType) {
     function addDefaultClasses(){
 
         thisInputLine.classList.add('error-validation')
@@ -11,17 +11,11 @@ function errorValidation(thisInputLine, inputData, regexValidator) {
         inputData.nextElementSibling.classList.add('error-validation')
     }
 
-    if(regexValidator) {
+    if(errorType) {
         addDefaultClasses()
 
-        switch (regexValidator){
-            case 'email':
-                inputData.nextElementSibling.innerText = 'Digite um email válido' 
-                break
-            case 'tel':
-                inputData.nextElementSibling.innerText = 'Digite um telefone válido'
-                break
-        }
+        inputData.nextElementSibling.innerText = regexValidator === 'email' ? 
+        'Digite um email válido' : 'Digite um telefone válido'
     }else{
         addDefaultClasses()
     }
